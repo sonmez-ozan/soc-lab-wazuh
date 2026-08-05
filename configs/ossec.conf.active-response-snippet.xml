@@ -1,0 +1,25 @@
+<!--
+  Active Response configuration.
+  File: /var/ossec/etc/ossec.conf (Wazuh-Manager)
+  Goes at the top level, inside <ossec_config>...</ossec_config>,
+  not nested inside <syscheck> or <rules>.
+-->
+<ossec_config>
+
+  <command>
+    <name>firewall-drop</name>
+    <executable>firewall-drop</executable>
+    <timeout_allowed>yes</timeout_allowed>
+  </command>
+
+  <active-response>
+    <disabled>no</disabled>
+    <command>firewall-drop</command>
+    <location>local</location>
+    <rules_id>100010</rules_id>
+    <timeout>300</timeout>
+  </active-response>
+
+  <!-- ... rest of manager config (global, alerts, etc) ... -->
+
+</ossec_config>

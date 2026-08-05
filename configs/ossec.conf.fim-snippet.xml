@@ -1,0 +1,13 @@
+<!--
+  Custom FIM directory addition.
+  File: /var/ossec/etc/ossec.conf (Kali-Attacker agent)
+  Goes INSIDE the existing <syscheck>...</syscheck> block,
+  alongside (not replacing) the default monitored directories.
+-->
+<syscheck>
+
+  <!-- ... existing default config, frequency, ignore lists, etc ... -->
+
+  <directories check_all="yes" report_changes="yes" realtime="yes">/etc/wazuh-demo</directories>
+
+</syscheck>
