@@ -79,3 +79,28 @@ even reaching a password prompt — confirming the connection is dropped at
 the firewall, not just failing authentication.
 
 See `screenshots/06-active-response/`.
+
+## Confirming the block auto-expires
+
+The `<timeout>300</timeout>` setting means the block isn't permanent — Wazuh's
+`wazuh-execd` module tracks the active response and automatically issues a
+`delete` command once the timeout elapses, removing the iptables rule without
+any manual cleanup:
+
+```bash
+sudo grep -a "10.10.10.150" /var/ossec/logs/active-responses.log | tail -5
+```
+
+```
+2026/08/07 03:20:25  active-response/bin/firewall-drop: {"command":"add", ...}      ← block applied
+2026/08/07 03:25:26  active-response/bin/firewall-drop: {"command":"delete", ...}   ← block auto-removed
+```
+
+`03:20:25` → `03:25:26` is a 301-second gap — matching the configured 300s
+timeout almost exactly (the extra second is scheduler/polling overhead, not
+drift in the mechanism). This confirms the full active-response lifecycle:
+the block is applied automatically, held for exactly as long as configured,
+and removed automatically — no manual `iptables` cleanup required between
+test runs, which is also what makes this lab repeatable on demand.
+
+See `screenshots/06-active-response/05-auto-unblock-expired.png`.
