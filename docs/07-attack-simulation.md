@@ -102,4 +102,6 @@ Wazuh — an authentic detail worth noting, not a bug.
 | Respond | Active Response (`firewall-drop`) | iptables DROP rule added for attacker IP |
 | Confirm | `iptables -L -n` + failed SSH retry | Block verified, connection hangs |
 
-See `screenshots/07-attack-simulation/` for the full visual sequence.
+See `docs/05-custom-detection-rule.md` and `docs/06-active-response.md` for
+the corresponding screenshots — the rule-firing and firewall-block evidence
+referenced there is the visual record of this attack simulation.
