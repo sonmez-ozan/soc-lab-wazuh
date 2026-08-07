@@ -19,12 +19,12 @@ attacking IP — all demonstrated end-to-end with a real simulated attack.
                     │    10.10.10.10       │
                     └──────────▲───────────┘
                                │ agents report events
-                 ┌─────────────┴───────────────┐
-                 │                             │
+                 ┌─────────────┴───────────────────┐
+                 │                                 │
         ┌────────▼──────────┐             ┌────────▼──────────┐
         │  Kali-Attacker    │             │  Ubuntu-Victim    │
         │  10.10.10.150     │  attack     │  10.10.10.151     │
-        │  (Attacker zone)  │ ────────▶  │  (Victims zone)    │
+        │  (Attacker zone)  │ ────────▶   │  (Victims zone)  │
         └───────────────────┘   SSH       └───────────────────┘
 ```
 
