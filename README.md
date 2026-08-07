@@ -12,20 +12,20 @@ attacking IP — all demonstrated end-to-end with a real simulated attack.
 ## Architecture
 
 ```
-                    ┌─────────────────────┐
+                    ┌──────────────────────┐
                     │   Wazuh-Manager      │
                     │  indexer + dashboard │
                     │      + manager       │
                     │    10.10.10.10       │
-                    └──────────▲──────────┘
+                    └──────────▲───────────┘
                                │ agents report events
-                 ┌─────────────┴─────────────┐
+                 ┌─────────────┴───────────────┐
                  │                             │
-        ┌────────▼────────┐          ┌────────▼────────┐
-        │  Kali-Attacker    │          │  Ubuntu-Victim   │
-        │  10.10.10.150     │  attack  │  10.10.10.151    │
-        │  (Attacker zone)  │─────────▶│  (Victims zone)  │
-        └───────────────────┘   SSH    └───────────────────┘
+        ┌────────▼──────────┐             ┌────────▼──────────┐
+        │  Kali-Attacker    │             │  Ubuntu-Victim    │
+        │  10.10.10.150     │  attack     │  10.10.10.151     │
+        │  (Attacker zone)  │ ────────▶  │  (Victims zone)    │
+        └───────────────────┘   SSH       └───────────────────┘
 ```
 
 All traffic between zones is mediated by pfSense (see Project 1). Outbound
